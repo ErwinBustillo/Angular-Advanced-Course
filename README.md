@@ -6,4 +6,4 @@ This repository have 1 application made with MEAN STACK basis splitted in 2 part
 
 The other part is an application where you are going to find testing exercises like Unit and Integration testing with Jasmine
 
-Enjoy the resource it's a paid course in [Udemy][https://www.udemy.com/angular-avanzado-fernando-herrera/]
+Enjoy the resource it's a paid course in [Udemy](https://www.udemy.com/angular-avanzado-fernando-herrera/)
