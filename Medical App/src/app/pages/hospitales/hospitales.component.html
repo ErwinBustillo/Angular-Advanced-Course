@@ -1,0 +1,62 @@
+<div class="row animated fadeIn">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+            <input #input (keyup)="buscarHospital(input.value)" type="text" class="form-control" placeholder="Buscar hospital...">          
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row" *ngIf="cargando">
+  <div class="col-sm-12">
+    <div class="alert alert-warning text-center">
+        <strong>Cargando</strong>
+        <br>
+        <i class="fa fa-refresh fa-spin fa-2x"></i>
+        <br>
+        <span>Espere por favor...</span>
+    </div>
+  </div>
+</div>
+
+<div class="row animated fadeIn" *ngIf="!cargando">
+  <div class="col-12">
+    
+
+    <div class="card">
+      <div class="card-body">
+        <div class="text-right">
+          <button class="btn btn-primary btn-rounded" (click)="crearHospital()"> <i class="fa fa-plus"></i> Crear Hospital</button>
+        </div>
+          <br>
+          <h3 class="card-title"> Hospitales registrados (<small>{{total}}</small>)</h3>
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>Foto</th>
+                <th>Hospital</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let h of hospitales">
+                  <td class="w70">
+                    <img [src]="h.img | imagen:'hospital'" class="img-50 img-circle pointer" (click)="mostrarModal(h._id)">
+                  </td>
+                  <td>
+                    <input type="text" class="form-control" [(ngModel)]="h.nombre" name="nombre">
+                  </td>
+                  <td>
+                    <button class="btn btn-primary" (click)="guardarHospital(h)"><i class="fa fa-save"></i></button>
+                    <button class="btn btn-danger" (click)="borrarHospital(h)"><i class="fa fa-trash-o"></i></button>
+                  </td>
+                </tr>
+            </tbody>
+          </table>
+          <button class="btn btn-secondary" (click)="cambiarDesde(-5)">Anteriores</button>
+          <button class="btn btn-secondary" (click)="cambiarDesde(+5)">Siguientes</button>
+      </div>
+    </div>
+  </div>
+</div>
